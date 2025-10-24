@@ -1,0 +1,42 @@
+name: Next.js CI Build & Type Check
+
+on:
+  # Roda a CI em todo push para o branch 'main' e em Pull Requests
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    # Rodar no ambiente Linux mais recente
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js 20.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20.x
+        # Cache de dependências para builds mais rápidos
+        cache: 'npm'
+    
+    # Instalar dependências. 'npm ci' é mais rápido em ambientes CI do que 'npm install'
+    - name: Install Dependencies
+      run: npm ci
+      
+    # 1. Checa a tipagem (TypeScript) e a lintagem
+    - name: Run ESLint and TypeScript Check
+      # O Next.js usa o 'next lint' e o 'next build' para verificar erros de tipagem
+      run: npm run lint
+
+    # 2. Constrói o projeto Next.js
+    - name: Build Next.js Application
+      # Este comando verifica se o build de produção é bem-sucedido
+      run: npm run build
+      
+    # Opcional: Para configurar testes no futuro, remover o '#' da linha abaixo:
+    # - name: Run Tests
+    #   run: npm test

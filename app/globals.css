@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  /* --font-mono: var(--font-geist-mono); */
+}
+
+@media (prefers-color-scheme: dark) {
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  /* font-family: Arial, Helvetica, sans-serif; */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background-color: #eef2f7;
+}
+.container {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  max-width: 700px;
+  width: 90%;
+}
+h1 {
+  color: #1a202c;
+  margin-bottom: 5px;
+  font-size: 1.8em;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 10px;
+}
+h2 {
+  color: #2d3748;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  border-bottom: 1px dashed #e2e8f0;
+  padding-bottom: 5px;
+}
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+}
+.info-item:nth-child(even) {
+  background-color: #f7f9fb;
+}
+strong {
+  color: #4a5568;
+  font-weight: 600;
+}
+span {
+  color: #2c5282;
+  font-weight: 500;
+}
+#status {
+  text-align: center;
+  margin-bottom: 20px;
+  padding: 10px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+.loading { color: #007bff; background-color: #e6f3ff; }
+.success { color: #28a745; background-color: #e6fae8; }
+.error { color: #dc3545; background-color: #ffe6e6; }
+
+/* ---------------------------------------------------- */
+/* MEDIA QUERY: Redução para Dispositivos Pequenos */
+/* ---------------------------------------------------- */
+@media (max-width: 600px) {
+    /* Reduz o tamanho da fonte do Título Principal */
+    h1 {
+        font-size: 1.4em; /* Tamanho menor para celular */
+    }
+
+    /* Opcional: Reduzir um pouco o padding interno do container */
+    .container {
+        padding: 15px;
+    }
+
+    /* Opcional: Reduzir a fonte dos títulos de seção */
+    h2 {
+        font-size: 1.1em;
+    }
+}
